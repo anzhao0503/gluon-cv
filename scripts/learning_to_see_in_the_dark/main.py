@@ -40,7 +40,7 @@ def train(args):
     val_dataset = data.MyDataset(args.dataset, "val", transform=val_transform)
     train_loader = gluon.data.DataLoader(train_dataset, shuffle=True, batch_size=args.batch_size, last_batch='rollover')
     val_loader = gluon.data.DataLoader(val_dataset, batch_size=1, last_batch='discard')
-    unet = net.UNet(out_channels, scale)
+    unet = UNet(out_channels, scale)
     unet.initialize(init=initializer.Xavier(), ctx=ctx)
 
     # optimizer and loss
